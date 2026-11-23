@@ -1,4 +1,4 @@
-# run-projects
+# everyday-tools
 
 A collection of independent scripts, small apps, and utilities. Each project has its own README, setup instructions, and runtime requirements. Install and run only the tools you need; there is no shared application or root dependency install.
 
@@ -8,11 +8,12 @@ A collection of independent scripts, small apps, and utilities. Each project has
 | --- | --- | --- | --- |
 | Development project launcher | Start, inspect, and stop groups of local development servers in VS Code, Warp, or the background. | macOS, Bash, Node.js | [Setup and usage](projects/dev-launcher/README.md) |
 | WhatsApp readable chat export | Export loaded WhatsApp Web messages to a readable offline HTML file, with date filters and optional conversation details. | Browser with Tampermonkey and WhatsApp Web | [Install and export](projects/whatsapp-export/README.md) |
+| WhatsApp Transcriere | Transcribe Romanian voice messages locally in WhatsApp Web and copy the text. | macOS, Homebrew, Chromium-based browser | [Install and test](projects/whatsapp-transcriere/README.md) |
 
 ## Repository layout
 
 ```text
-run-projects/
+everyday-tools/
 ├── README.md                     # Project directory and collection conventions
 ├── LICENSE
 ├── dev.sh                        # Existing launcher entry point
@@ -20,10 +21,17 @@ run-projects/
 └── projects/
     ├── dev-launcher/
     │   └── README.md             # Full launcher documentation
-    └── whatsapp-export/
+    ├── whatsapp-export/
+    │   ├── README.md
+    │   ├── .gitignore
+    │   └── whatsapp-export.user.js
+    └── whatsapp-transcriere/
         ├── README.md
-        ├── .gitignore
-        └── whatsapp-export.user.js
+        ├── extension/
+        ├── host/
+        ├── tests/
+        ├── install.sh
+        └── uninstall.sh
 ```
 
 The launcher stays at the repository root for compatibility with existing shell wrappers, relative paths, and personal `*.config.json` files. New utilities belong in their own `projects/<name>/` directory. Project folders are part of this repository, not nested Git repositories.

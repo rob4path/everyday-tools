@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Transcriere",
+  "version": "1.0",
+  "description": "Buton „Transcrie” la mesajele vocale din WhatsApp Web, transcrise local cu whisper.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0FWwx8Uv9ZtfA21Z7tezagT2NShZvCAOmMzLYKWe4b6HG97AyyMD7Vs6v3pQTcm2ORVKGeftfxI/S6hGh7l8RK8BFf+3P/x3nTH3th+IBK7F65mev/T/ioErlLdvIVUfmCzY6TPFkWksAib9ZHD6a2yqo4g4sbARABUiq9zu5MBjtQVeW6Ki+4g0amSslIODEEvQma5Dv913n2qQOp5aTssZ4erOci81DzNjCcXJ0xO4SEFdjk0HVdCFDDHedBiZRF1B3yFdiVJu0UgTujkNLiijDjPRaNOOe89fbbI5GxUx86HGHiXvngo2b64gbvjcNCC52zTBI9OgUX1OPd+elQIDAQAB",
+  "permissions": ["nativeMessaging", "storage"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["main.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

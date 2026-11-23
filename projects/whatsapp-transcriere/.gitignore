@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+ggml-*.bin
+ggml-*.bin.part

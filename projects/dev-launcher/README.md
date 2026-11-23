@@ -1,6 +1,6 @@
 # Development project launcher
 
-Part of the [run-projects utility collection](../../README.md). The executable remains at [`../../dev.sh`](../../dev.sh), with [`../../example.config.json`](../../example.config.json), to preserve existing commands and local configurations. Run the commands below from the repository root.
+Part of the [everyday-tools utility collection](../../README.md). The executable remains at [`../../dev.sh`](../../dev.sh), with [`../../example.config.json`](../../example.config.json), to preserve existing commands and local configurations. Run the commands below from the repository root.
 
 Start a group of local development projects with one command. Run servers in **VS Code**, in **Warp split panes**, or in the **background** with log files. Check their status and stop them individually or as a group.
 
@@ -19,8 +19,8 @@ For VS Code, enable the `code` command through the Command Palette: **Shell Comm
 ## Quick start
 
 ```bash
-git clone https://github.com/rob4path/run-projects.git
-cd run-projects
+git clone https://github.com/rob4path/everyday-tools.git
+cd everyday-tools
 chmod +x dev.sh
 cp example.config.json myapp.config.json
 ```
@@ -31,7 +31,7 @@ For example, if your folders look like this:
 
 ```text
 Coding/
-├── run-projects/
+├── everyday-tools/
 │   ├── dev.sh
 │   └── myapp.config.json
 └── myapp/
@@ -128,7 +128,7 @@ Use simple names such as `myapp`, `api`, and `web`; avoid slashes, quotes, and w
 You can always use `./dev.sh -c myapp ...`. To call it from any directory, create a `dev` symlink in your own bin directory:
 
 ```bash
-# Run from the run-projects directory.
+# Run from the everyday-tools directory.
 mkdir -p "$HOME/.local/bin"
 ln -s "$PWD/dev.sh" "$HOME/.local/bin/dev"
 export PATH="$HOME/.local/bin:$PATH"
