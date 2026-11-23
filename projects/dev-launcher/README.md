@@ -1,6 +1,6 @@
 # Development project launcher
 
-Part of the [everyday-tools utility collection](../../README.md). The executable remains at [`../../dev.sh`](../../dev.sh), with [`../../example.config.json`](../../example.config.json), to preserve existing commands and local configurations. Run the commands below from the repository root.
+Part of [everyday-tools](../../README.md). Run the examples from this project folder.
 
 Start a group of local development projects with one command. Run servers in **VS Code**, in **Warp split panes**, or in the **background** with log files. Check their status and stop them individually or as a group.
 
@@ -20,8 +20,7 @@ For VS Code, enable the `code` command through the Command Palette: **Shell Comm
 
 ```bash
 git clone https://github.com/rob4path/everyday-tools.git
-cd everyday-tools
-chmod +x dev.sh
+cd everyday-tools/projects/dev-launcher
 cp example.config.json myapp.config.json
 ```
 
@@ -32,8 +31,9 @@ For example, if your folders look like this:
 ```text
 Coding/
 ├── everyday-tools/
-│   ├── dev.sh
-│   └── myapp.config.json
+│   └── projects/dev-launcher/
+│       ├── dev.sh
+│       └── myapp.config.json
 └── myapp/
     ├── backend/
     ├── frontend/
@@ -41,7 +41,7 @@ Coding/
     └── docs/
 ```
 
-The example's `"root": "../myapp"` already resolves to the right directory. Relative roots resolve from the **config file's directory**, regardless of where you run the command. Use an absolute root if your projects live elsewhere. `~` and `$HOME` inside JSON paths are not expanded.
+The example's `"root": "../../../myapp"` already resolves to the right directory. Relative roots resolve from the **config file's directory**, regardless of where you run the command. Use an absolute root if your projects live elsewhere. `~` and `$HOME` inside JSON paths are not expanded.
 
 Check the configuration, then start the default projects:
 
@@ -67,14 +67,14 @@ The example does not create projects or install their dependencies. Each selecte
 
 ## Example JSON
 
-[example.config.json](../../example.config.json) is a complete, copyable **strict JSON** file with a backend, frontend, optional mobile app, and a docs folder. Local `*.config.json` files are ignored by Git; the example is the only exception.
+[example.config.json](example.config.json) is a complete, copyable **strict JSON** file with a backend, frontend, optional mobile app, and a docs folder. Local `*.config.json` files are ignored by Git; the example is the only exception.
 
 A smaller configuration for just two servers is:
 
 ```json
 {
   "session": "myapp",
-  "root": "../myapp",
+  "root": "../../../myapp",
   "mode": "vscode",
   "projects": [
     {
@@ -123,12 +123,16 @@ Use simple names such as `myapp`, `api`, and `web`; avoid slashes, quotes, and w
 
 `isMain` controls the default selection; it does not stop you from selecting another project explicitly.
 
+## Updating an older checkout
+
+If your launcher used to live at the repository root, move your personal `*.config.json` files and any `.dev-pids/` and `.dev-logs/` directories beside the new `dev.sh`. For each relative `root` in a moved config, prepend `../../` so it still points to the same directory. Repoint any launcher symlinks to the new script and update the PID directory in existing VS Code tasks or Warp launch configurations before using them again.
+
 ## Optional commands on your PATH
 
 You can always use `./dev.sh -c myapp ...`. To call it from any directory, create a `dev` symlink in your own bin directory:
 
 ```bash
-# Run from the everyday-tools directory.
+# Run from projects/dev-launcher.
 mkdir -p "$HOME/.local/bin"
 ln -s "$PWD/dev.sh" "$HOME/.local/bin/dev"
 export PATH="$HOME/.local/bin:$PATH"

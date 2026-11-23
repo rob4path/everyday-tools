@@ -1,6 +1,6 @@
 {
   "session": "myapp",
-  "root": "../myapp",
+  "root": "../../../myapp",
   "mode": "vscode",
   "groups": {
     "backend": ["api"],

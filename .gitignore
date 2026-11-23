@@ -1,13 +1,9 @@
-# Local project groups: copy example.config.json to <name>.config.json.
+# Personal launcher configs from older checkouts.
 /*.config.json
-!/example.config.json
 
 # Personal account/repository notes.
 /github.md
 
-# Runtime state and generated editor workspaces.
-.dev-logs/
-.dev-pids/
 *.code-workspace
 *.log
 *.pid

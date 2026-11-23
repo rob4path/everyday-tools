@@ -1,0 +1,4 @@
+/*.config.json
+!/example.config.json
+/.dev-logs/
+/.dev-pids/
